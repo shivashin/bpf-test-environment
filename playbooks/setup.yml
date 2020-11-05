@@ -1,0 +1,5 @@
+- hosts: vagrant
+  become: yes
+  gather_facts: no
+  roles:
+    - setup

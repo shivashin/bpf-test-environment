@@ -1,0 +1,7 @@
+- name: apt update
+  apt: update_cache=yes
+
+- name: install packages
+  apt: 
+    name: "{{ pre_packages }}"
+    state: latest

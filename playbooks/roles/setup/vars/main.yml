@@ -1,0 +1,12 @@
+pre_packages:
+  - lsb-release
+  - wget 
+  - gnupg
+
+bcc_packages:
+  - bcc-tools
+  - libbcc-examples
+  - python3-bcc
+
+tools:
+  - tmux

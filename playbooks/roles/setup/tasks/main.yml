@@ -1,0 +1,3 @@
+- include: pre-install.yml
+- include: bcc.yml
+- include: tools.yml

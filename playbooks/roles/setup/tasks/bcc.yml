@@ -1,0 +1,22 @@
+- name: apt-key adv keyserver.ubuntu.com
+  become: yes
+  apt_key:
+    keyserver: keyserver.ubuntu.com
+    id: 4052245BD4284CDD
+
+- name: write iovisor list
+  shell: echo "deb https://repo.iovisor.org/apt/$(lsb_release -cs) $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/iovisor.list
+
+- name: apt update
+  become: yes
+  apt: update_cache=yes
+
+- name: apt install bcc
+  become: yes
+  apt:
+    name: "{{ bcc_packages }}"
+    state: latest
+
+- name: install linux-headers
+  become: yes
+  shell: apt-get install -y linux-headers-$(uname -r)
