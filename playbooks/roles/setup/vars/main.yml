@@ -7,6 +7,7 @@ bcc_packages:
   - bcc-tools
   - libbcc-examples
   - python3-bcc
+  - linux-source-5.0.0
 
 tools:
   - tmux
