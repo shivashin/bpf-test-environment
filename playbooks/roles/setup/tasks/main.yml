@@ -1,3 +1,4 @@
 - include: pre-install.yml
 - include: bcc.yml
+- include: bpf.yml
 - include: tools.yml

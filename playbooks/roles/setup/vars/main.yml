@@ -9,5 +9,23 @@ bcc_packages:
   - python3-bcc
   - linux-source-5.0.0
 
+bpf_compile_packages:
+  - build-essential 
+  - clang 
+  - llvm 
+  - flex 
+  - bison 
+  - libelf-dev
+  - python-pip 
+  - python-dev 
+  - libffi-dev 
+  - libssl-dev 
+  - libxml2-dev 
+  - libxslt1-dev 
+  - libjpeg8-dev 
+  - zlib1g-dev
+
 tools:
   - tmux
+
+user: vagrant

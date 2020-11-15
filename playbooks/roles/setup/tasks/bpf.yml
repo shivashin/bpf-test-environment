@@ -1,0 +1,56 @@
+- name: copy linux-source
+  become_user: "{{ user }}"
+  copy: 
+    src: /usr/src/linux-source-5.0.0/linux-source-5.0.0.tar.bz2 
+    dest: /home/{{ user }}/linux-source-5.0.0.tar.bz2
+    owner: "{{ user }}"
+    group: "{{ user }}"
+    remote_src: yes
+
+- name: unarchive linux-source
+  become_user: "{{ user }}"
+  unarchive:
+    src: /home/{{ user }}/linux-source-5.0.0.tar.bz2
+    dest: /home/{{ user }}/
+    remote_src: yes
+
+- name: bpf compile tools
+  become: yes
+  apt:
+    name: "{{ bpf_compile_packages }}"
+    state: latest
+
+- name: make olddefconfig
+  become: yes
+  become_user: "{{ user }}"
+  command: chdir=/home/{{ user }}/linux-source-5.0.0 make olddefconfig
+
+- name: make headers_install
+  command: chdir=/home/{{ user }}/linux-source-5.0.0 make headers_install
+
+- name: replace word for avoiding error
+  replace:
+    dest: /home/{{ user }}/linux-source-5.0.0/samples/bpf/Makefile
+    regexp: 'readelf -S ./llvm_btf_verify.o'
+    replace: 'readelf -S ./llvm_btf_verify.o 2>/dev/null'
+
+- name: add setting for avoiding error
+  blockinfile:
+    dest: /home/{{ user }}/linux-source-5.0.0/tools/perf/perf-sys.h
+    marker: "//--"
+    insertbefore: 'static inline int'
+    content: |
+      #ifndef HAVE_ATTR_TEST
+      #define HAVE_ATTR_TEST 0
+      #endif
+
+- name: replace word for avoiding error
+  replace:
+    dest: /home/{{ user }}/linux-source-5.0.0/tools/perf/perf-sys.h
+    regexp: '#ifdef HAVE_ATTR_TEST'
+    replace: '#if HAVE_ATTR_TEST'
+
+- name: make samples/bpf/
+  become: yes
+  become_user: "{{ user }}"
+  command: chdir=/home/{{ user }}/linux-source-5.0.0/samples/bpf/ sudo make
