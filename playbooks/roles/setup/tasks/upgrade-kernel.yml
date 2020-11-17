@@ -1,0 +1,4 @@
+- name: install kernel5.3
+  apt:
+    name: "{{ kernel_packages }}"
+    state: latest
