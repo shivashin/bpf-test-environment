@@ -22,6 +22,6 @@ vagrant reload
 
 Linux verison upgrades Linux5.3+.
 
-### Why is Linux 5.3+ required?
+### Q. Why is Linux 5.3+ required?
 
 Otherwise the BPF program will be rejected due to the maximum instruction limit (see [this commit](https://github.com/torvalds/linux/commit/c04c0d2b968ac45d6ef020316808ef6c82325a82).)
