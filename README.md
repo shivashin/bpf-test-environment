@@ -2,10 +2,10 @@
 
 ## Execution Environment
 
-ansible 2.9.14
-python 3.9.0
-vagrant 2.2.10
-VirtualBox 6.1.16
++ ansible 2.9.14
++ python 3.9.0
++ vagrant 2.2.10
++ VirtualBox 6.1.16
 
 ## Getting Started
 
