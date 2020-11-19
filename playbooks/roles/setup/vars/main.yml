@@ -25,6 +25,18 @@ bpf_compile_packages:
   - libjpeg8-dev 
   - zlib1g-dev
 
+bpftrace_packages:
+  - cmake
+  - g++ 
+  - git
+  - libfl-dev
+  - systemtap-sdt-dev
+  - binutils-dev
+  - llvm-7-dev 
+  - llvm-7-runtime 
+  - libclang-7-dev 
+  - clang-7
+
 tools:
   - tmux
 

@@ -3,3 +3,4 @@
 - include: bpf.yml
 - include: tools.yml
 - include: upgrade-kernel.yml
+- include: bpftrace.yml
