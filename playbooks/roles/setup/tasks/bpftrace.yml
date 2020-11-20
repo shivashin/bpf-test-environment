@@ -9,18 +9,20 @@
     state: latest
 
 - name: git clone bpftrace
+  become: yes
+  become_user: "{{ user }}"
   git:
     repo: "https://github.com/iovisor/bpftrace"
-    dest: /home/{{ user }}/
+    dest: /home/{{ user }}/bpftrace
 
 - name: mkdir bpftrace/build
-  command: chdir=/home/{{ user }}/ mkdir bpftrace/build; 
+  file: path=/home/{{ user }}/bpftrace/build state=directory owner="{{ user }}" group="{{ user }}" mode=0755
 
 - name: cmake
   command: chdir=/home/{{ user }}/bpftrace/build cmake -DCMAKE_BUILD_TYPE=Release ..
 
 - name: make
-  command: chdir=/home/{{ user }}/bpftrace/build make -j8 
+  command: chdir=/home/{{ user }}/bpftrace/build sudo make -j2
 
 - name: make install
   become: yes
