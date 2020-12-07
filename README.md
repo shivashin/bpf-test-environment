@@ -12,8 +12,9 @@
 After git clone, then run:
 ```
 vagrant up
-ansible-playbook playbooks/setup.yml
+ansible-playbook playbooks/upgrade-kernel.yml
 vagrant reload
+ansible-playbook playbooks/setup.yml
 ```
 
 ## FAQ
