@@ -41,9 +41,3 @@ tools:
   - tmux
 
 user: vagrant
-
-kernel_packages:
-  - linux-image-5.3.0-40-generic 
-  - linux-headers-5.3.0-40-generic 
-  - linux-modules-extra-5.3.0-40-generic
-
