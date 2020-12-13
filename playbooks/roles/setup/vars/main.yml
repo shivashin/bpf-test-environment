@@ -4,10 +4,14 @@ pre_packages:
   - gnupg
 
 bcc_packages:
-  - bcc-tools
-  - libbcc-examples
-  - python3-bcc
   - linux-source-5.0.0
+  - libedit-dev
+  - python
+  - libclang-6.0-dev
+  - luajit
+  - arping
+  - netperf
+  - iperf3
 
 bpf_compile_packages:
   - build-essential 

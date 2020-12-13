@@ -5,3 +5,21 @@
   apt: 
     name: "{{ pre_packages }}"
     state: latest
+
+- name: install bpf_compile_tools
+  become: yes
+  apt:
+    name: "{{ bpf_compile_packages }}"
+    state: latest
+
+- name: install bpftrace_packages
+  become: yes
+  apt:
+    name: "{{ bpftrace_packages }}"
+    state: latest
+
+- name: install bcc_packages
+  become: yes
+  apt:
+    name: "{{ bcc_packages }}"
+    state: latest

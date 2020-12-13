@@ -2,12 +2,6 @@
   become: yes
   apt: update_cache=yes
 
-- name: apt install bpftrace
-  become: yes
-  apt:
-    name: "{{ bpftrace_packages }}"
-    state: latest
-
 - name: git clone bpftrace
   become: yes
   become_user: "{{ user }}"

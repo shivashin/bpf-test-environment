@@ -1,5 +1,5 @@
 - include: pre-install.yml
+- include: tools.yml
 - include: bcc.yml
 - include: bpf.yml
-- include: tools.yml
 - include: bpftrace.yml

@@ -14,12 +14,6 @@
     dest: /home/{{ user }}/
     remote_src: yes
 
-- name: bpf compile tools
-  become: yes
-  apt:
-    name: "{{ bpf_compile_packages }}"
-    state: latest
-
 - name: make olddefconfig
   become: yes
   become_user: "{{ user }}"
